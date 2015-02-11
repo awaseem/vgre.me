@@ -10,8 +10,13 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import ConfigParser
+
+DIGITAL_OCEAN_PRODUCTION = False
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+if "DIGITAL_OCEAN" in os.environ:
+    DIGITAL_OCEAN_PRODUCTION = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -20,7 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'WFaOrRh0u3LZim5xsD561gQZVoM5bNT8YmebyMqfyneDXWxB2s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if DIGITAL_OCEAN_PRODUCTION:
+    DEBUG = False
+else:
+    DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -51,20 +59,27 @@ ROOT_URLCONF = 'django_project.urls'
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_db',
-        'USER': 'django',
-        'PASSWORD': 'django',
-        'HOST': 'localhost',
-        'PORT': '',
+if DIGITAL_OCEAN_PRODUCTION:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'django_db',
+            'USER': 'django',
+            'PASSWORD': 'django',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'sqlite3.db'),
+        }
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
