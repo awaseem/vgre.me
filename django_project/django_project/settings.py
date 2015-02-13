@@ -17,12 +17,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 if "DIGITAL_OCEAN" in os.environ:
     DIGITAL_OCEAN_PRODUCTION = True
+    try:
+        production_settings = ConfigParser.ConfigParser()
+        production_settings.readfp(open("settings.cfg"))
+    except IOError:
+        DIGITAL_OCEAN_PRODUCTION = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'WFaOrRh0u3LZim5xsD561gQZVoM5bNT8YmebyMqfyneDXWxB2s'
+if DIGITAL_OCEAN_PRODUCTION:
+    SECRET_KEY = production_settings.get("KEYS", "SECRET_KEY")
+else:
+    SECRET_KEY = "_e76b0pz(6v-=w+ga44q585k*6_6i#y88s$sgu8!)u7x459f97"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if DIGITAL_OCEAN_PRODUCTION:
@@ -32,7 +40,7 @@ else:
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["104.131.170.176"]
 
 
 # Application definition
@@ -66,9 +74,9 @@ if DIGITAL_OCEAN_PRODUCTION:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'django_db',
-            'USER': 'django',
-            'PASSWORD': 'django',
+            'NAME': production_settings.get("database", "name"),
+            'USER': production_settings.get("database", "user"),
+            'PASSWORD': production_settings.get("database", "password"),
             'HOST': 'localhost',
             'PORT': '',
         }
