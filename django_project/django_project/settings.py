@@ -19,7 +19,7 @@ if "DIGITAL_OCEAN" in os.environ:
     DIGITAL_OCEAN_PRODUCTION = True
     try:
         production_settings = ConfigParser.ConfigParser()
-        production_settings.readfp(open(os.path.join(BASE_DIR,"django_project/settings.cfg")))
+        production_settings.readfp(open(os.path.join(BASE_DIR, "django_project/settings.cfg")))
     except IOError:
         DIGITAL_OCEAN_PRODUCTION = False
 
@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "home"
 )
 
 MIDDLEWARE_CLASSES = (
