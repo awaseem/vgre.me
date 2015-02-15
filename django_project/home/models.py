@@ -5,7 +5,8 @@ from django.utils.encoding import force_bytes
 
 class Header(models.Model):
     pub_date = models.DateTimeField("date published", auto_now_add=True)
-    sub_heading = models.CharField(max_length=200)
+    main_heading = models.CharField(max_length=10, blank=False)
+    sub_heading = models.CharField(max_length=200, blank=False)
     button_text = models.CharField(max_length=5, blank=False)
     title_text = models.CharField(max_length=200, blank=False)
     summary_text = models.CharField(max_length=400, blank=False)

@@ -6,7 +6,7 @@ from home.models import Header
 class HeaderAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Header", {
-            "fields": ["sub_heading", "button_text"]
+            "fields": ["main_heading", "sub_heading", "button_text"]
         }),
         ("Body", {
             "fields": ["title_text", "summary_text"]
@@ -30,5 +30,9 @@ class HeaderAdmin(admin.ModelAdmin):
                               level=messages.ERROR)
     make_current_header.short_description = "Set as Current Header"
 
+    def save_model(self, request, obj, form, change):
+        if Header.objects.count() == 0:
+            obj.current_header = True
+        obj.save()
 
 admin.site.register(Header, HeaderAdmin)
