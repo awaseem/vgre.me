@@ -9,7 +9,7 @@ class Header(models.Model):
     sub_heading = models.CharField(max_length=200, blank=False)
     button_text = models.CharField(max_length=5, blank=False)
     title_text = models.CharField(max_length=200, blank=False)
-    summary_text = models.CharField(max_length=400, blank=False)
+    summary_text = models.TextField(blank=False)
     current_header = models.BooleanField(default=False)
 
     def __str__(self):

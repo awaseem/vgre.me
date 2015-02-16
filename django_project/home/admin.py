@@ -13,6 +13,8 @@ class HeaderAdmin(admin.ModelAdmin):
         }),
     ]
 
+    change_form_template = "home/admin/change_form.html"
+
     list_display = ('pub_date', 'sub_heading', 'current_header')
 
     list_filter = ('pub_date', 'current_header')

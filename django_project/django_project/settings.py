@@ -52,8 +52,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "tinymce",
+    'django_wysiwyg',
     "home"
 )
+
+DJANGO_WYSIWYG_FLAVOR = "tinymce"
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
