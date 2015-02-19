@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+{% load staticfiles %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Clean Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "cleanBootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "cleanBootstrap/css/clean-blog.min.css" %}" rel="stylesheet">
+    <link href="{% static "cleanBootstrap/css/styles.css" %}" rel="stylesheet">
+    <link href="{% static "owl-carousel/owl.carousel.css" %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Sample Post</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url(http://assets.vg247.com/current//2014/12/far-cry-4-concept-art-6.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>{{ current_header.main_heading }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ current_header.sub_heading }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container text-center">
+        <h1>{{ current_header.title_text}}</h1>
+        <p>{{ current_header.summary_text|safe }}</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container latest-reviews">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://i.ytimg.com/vi/e9al_k8e93I/maxresdefault.jpg)">
+
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://egmr.net/wp-content/gallery/14-oct-2014-preview-far-cry-4/far-cry-4-egmr-9.jpg)">
+                            <h1 class="text-center card-heading">Far Cry 4</h1>
+                            <p class="text-center card-subheading">Far Cry 3 was one of the best games of 2013, But can this game match the title?</p>
+                            <br>
+                            <button type="button" class="btn btn-danger center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/erikkain/files/2014/10/daI-cover.jpg)">
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://image.jeuxvideo.com/medias/142133/1421332852-1714-card.jpg)">
+                            <h1 class="text-center card-heading">Dragon Age Inquisition</h1>
+                            <p class="text-center card-subheading">EA has had a rough patch with the last dragon age game. Can this one live up to the hype?</p>
+                            <br>
+                            <button type="button" class="btn btn-danger center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/insertcoin/files/2015/01/dying-light4.jpeg)">
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://i.kinja-img.com/gawker-media/image/upload/s--Bab2-fHp--/t0z7gkfiysgnecush2ai.jpg)">
+                            <h1 class="text-center card-heading">Dying Light</h1>
+                            <p class="text-center card-subheading">The latest from techland's, is the game that they always wanted to make? Or another failure in terms of hype?</p>
+                            <br>
+                            <button type="button" class="btn btn-danger center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container more-reviews">
+        <h1 class="text-center">Check Out More Reviews</h1>
+        <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
+        <button type="button" class="btn btn-danger btn-lg center-block">Click Here for More</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="outro-header" style="background-image: url(http://www.igyaan.in/wp-content/uploads/2014/11/far-cry-4-gets-more-screenshots-and-concept-art-showcasing-hurk-pagan-min-and-tuk-tuks-in-kyrat-8-1024x614.jpg)">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{%  static "cleanBootstrap/js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "cleanBootstrap/js/clean-blog.min.js" %}"></script>
+
+
+</body>
+
+</html>

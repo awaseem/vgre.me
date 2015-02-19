@@ -1,0 +1,85 @@
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	background: no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 50px;
+    width: 320px;
+	height: 426px;
+    border-radius: 6px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: lightgray;
+}
+
+.card-heading {
+    color: floralwhite;
+    margin-bottom: 10px;
+}
+
+.card-subheading {
+    color: floralwhite;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.latest-reviews {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.more-reviews {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.outro-header {
+  background-color: #808080;
+  background: no-repeat center center;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
