@@ -2,22 +2,23 @@
 .flip-container {
 	perspective: 1000;
 }
-	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
 		transform: rotateY(180deg);
-	}
+}
 
 .flip-container, .front, .back {
 	background: no-repeat center center;
     background-size: cover;
-    background-attachment: scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    margin-bottom: 50px;
     width: 320px;
 	height: 426px;
     border-radius: 6px;
+    margin-bottom: 50px;
+}
+
+@media  {
+    
 }
 
 /* flip speed goes here */
@@ -82,4 +83,39 @@
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+
+.white-text{
+    color: floralwhite;
+}
+
+/* CSS */
+.vidContain {
+    width:300px; height:200px;
+    position:relative;
+    display:inline-block;
+    margin:10px;
+}
+.vid {
+    position: absolute;
+    top: 0; left:0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+.content {
+    position:absolute;
+    top:0; left:0;
+    background: black;
+    color:white;
+}
+
+.menu-button {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: floralwhite;
+}
+
+.menu-button:hover {
+    color: floralwhite;
 }

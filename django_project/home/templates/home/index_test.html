@@ -19,6 +19,7 @@
     <link href="{% static "cleanBootstrap/css/clean-blog.min.css" %}" rel="stylesheet">
     <link href="{% static "cleanBootstrap/css/styles.css" %}" rel="stylesheet">
     <link href="{% static "owl-carousel/owl.carousel.css" %}" rel="stylesheet">
+    <link href="{% static "side-bar/css/simple-sidebar.css" %}" rel="stylesheet"></link>
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -34,48 +35,32 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="post.html">Sample Post</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper" style="background-color: #d9534f">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand white-text">
+                    <h3>Start Bootstrap</h3>
+                </li>
+                <hr class="small">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Reviews</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+            </ul>
         </div>
-        <!-- /.container -->
-    </nav>
 
+    <div id="page-content-wrapper">
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url(http://assets.vg247.com/current//2014/12/far-cry-4-concept-art-6.jpg)">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
+                <a class="menu-button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-align-justify"></span></a>
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         <h1>{{ current_header.main_heading }}</h1>
@@ -144,11 +129,12 @@
     <div class="container more-reviews">
         <h1 class="text-center">Check Out More Reviews</h1>
         <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
-        <button type="button" class="btn btn-danger btn-lg center-block">Click Here for More</button>
+        <button href="#menu-toggle" id="menu-toggle" type="button" class="btn btn-danger btn-lg center-block">Click Here for More</button>
     </div>
 
     <!-- Footer -->
     <footer class="outro-header" style="background-image: url(http://www.igyaan.in/wp-content/uploads/2014/11/far-cry-4-gets-more-screenshots-and-concept-art-showcasing-hurk-pagan-min-and-tuk-tuks-in-kyrat-8-1024x614.jpg)">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
@@ -177,10 +163,12 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright white-text">Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
+        </div>
     </footer>
+    </div>
 
     <!-- jQuery -->
     <script src="{%  static "cleanBootstrap/js/jquery.js" %}"></script>
@@ -191,7 +179,14 @@
     <!-- Custom Theme JavaScript -->
     <script src="{% static "cleanBootstrap/js/clean-blog.min.js" %}"></script>
 
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
+</div>
 </body>
 
 </html>
