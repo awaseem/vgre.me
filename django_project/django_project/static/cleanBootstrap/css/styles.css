@@ -17,8 +17,11 @@
     margin-bottom: 50px;
 }
 
-@media  {
-    
+@media(max-width: 1200px) {
+    .flip-container, .front, .back {
+    width: 280px;
+	height: 380px;
+    }
 }
 
 /* flip speed goes here */
