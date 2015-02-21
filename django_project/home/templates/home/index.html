@@ -1,243 +1,192 @@
-<!DOCTYPE HTML>
-<!--
-	Helios by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
 {% load staticfiles %}
-<html>
-	<head>
-		<title>Helios by HTML5 UP</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="{% static "helios/js/jquery.min.js" %}"></script>
-		<script src="{% static "helios/js/jquery.dropotron.min.js" %}"></script>
-		<script src="{% static "helios/js/jquery.scrolly.min.js" %}"></script>
-		<script src="{% static "helios/js/jquery.onvisible.min.js" %}"></script>
-		<script src="{% static "helios/js/skel.min.js" %}"></script>
-		<script src="{% static "helios/js/skel-layers.min.js" %}"></script>
-		<script src="{% static "helios/js/init.js" %}"></script>
-		<noscript>
-			<link rel="stylesheet" href="{% static "helios/css/skel.css" %}"/>
-			<link rel="stylesheet" href="{% static "helios/css/style.css" %}"/>
-			<link rel="stylesheet" href="{% static "helios/css/style-desktop.css" %}"/>
-			<link rel="stylesheet" href="{% static "helios/css/style-noscript.css" %}"/>
-		</noscript>
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-	</head>
-	<body class="homepage">
+<head>
 
-		<!-- Header -->
-			<div id="header">
-						
-				<!-- Inner -->
-					<div class="inner">
-						<header>
-							<h1><a href="index.html" id="logo">{{ current_header.main_heading }}</a></h1>
-							<hr />
-							<p>{{ current_header.sub_heading }}</p>
-						</header>
-						<footer>
-							<a href="#banner" class="button circled scrolly">{{ current_header.button_text }}</a>
-						</footer>
-					</div>
-				
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="">Dropdown</a>
-								<ul>
-									<li><a href="#">Lorem ipsum dolor</a></li>
-									<li><a href="#">Magna phasellus</a></li>
-									<li><a href="#">Etiam dolore nisl</a></li>
-									<li>
-										<a href="">And a submenu &hellip;</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Phasellus consequat</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-										</ul>
-									</li>
-									<li><a href="#">Veroeros feugiat</a></li>
-								</ul>
-							</li>
-							<li><a href="left-sidebar.html">Left Sidebar</a></li>
-							<li><a href="right-sidebar.html">Right Sidebar</a></li>
-							<li><a href="no-sidebar.html">No Sidebar</a></li>
-						</ul>
-					</nav>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-			</div>
-			
-		<!-- Banner -->
-			<section id="banner">
-				<header>
-					<h2>{{ current_header.title_text }}</h2>
-					<p>{{ current_header.summary_text|safe }}</p>
-				</header>
-			</section>
+    <title>Clean Blog</title>
 
-		<!-- Carousel -->
-			<section class="carousel">
-				<div class="reel">
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "cleanBootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
 
-					<article>
-						<a href="#" class="image featured"><img src="static/helios/images/pic01.jpg" alt="" /></a>
-                        <header>
-							<h3><a href="#">Fermentum sagittis proin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Fermentum sagittis proin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Varius magnis sollicitudin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+    <!-- Custom CSS -->
+    <link href="{% static "cleanBootstrap/css/clean-blog.min.css" %}" rel="stylesheet">
+    <link href="{% static "cleanBootstrap/css/styles.css" %}" rel="stylesheet">
+    <link href="{% static "owl-carousel/owl.carousel.css" %}" rel="stylesheet">
+    <link href="{% static "side-bar/css/simple-sidebar.css" %}" rel="stylesheet"></link>
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Pulvinar sagittis congue</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Fermentum sagittis proin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Sed quis rhoncus placerat</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Ultrices urna sit lobortis</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
-				
-					<article>
-						<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-						<header>
-							<h3><a href="#">Varius magnis sollicitudin</a></h3>
-						</header>
-						<p>Commodo id natoque malesuada sollicitudin elit suscipit magna.</p>							
-					</article>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-				</div>
-			</section>
+</head>
 
-		<!-- Footer -->
-			<div id="footer">
-				<div class="container">
-					<div class="row">
-						<!-- Tweets -->
-							<section class="4u -4u">
-								<header>
-									<h2 class="icon fa-twitter circled"><span class="label">Tweets</span></h2>
-								</header>
-								<ul class="divided">
-									<li>
-										<article class="tweet">
-											Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
-											<span class="timestamp">5 minutes ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Hendrerit rutrum quisque.
-											<span class="timestamp">30 minutes ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
-											<span class="timestamp">3 hours ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
-											<span class="timestamp">5 hours ago</span>
-										</article>
-									</li>
-								</ul>
-							</section>
-					</div>
-					<hr />
-					<div class="row">
-						<div class="12u">
-							
-							<!-- Contact -->
-								<section class="contact">
-									<header>
-										<h3>Nisl turpis nascetur interdum?</h3>
-									</header>
-									<p>Urna nisl non quis interdum mus ornare ridiculus egestas ridiculus lobortis vivamus tempor aliquet.</p>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
-										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
-									</ul>
-								</section>
-							
-							<!-- Copyright -->
-								<div class="copyright">
-									<ul class="menu">
-										<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-							
-						</div>
-					
-					</div>
-				</div>
-			</div>
+<body>
+<div id="wrapper" class="toggled">
+        <div id="sidebar-wrapper" style="background-color: {{ current_header.menu_background }}">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand white-text">
+                    <h3>Start Bootstrap</h3>
+                </li>
+                <hr class="small">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Reviews</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        </div>
 
-	</body>
+    <div id="page-content-wrapper">
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{ current_header.header_cover }})">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <button class="btn {{ current_header.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+                    <div class="site-heading">
+                        <h1>{{ current_header.main_heading }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ current_header.sub_heading }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container text-center">
+        <h1>{{ current_header.title_text}}</h1>
+        <p>{{ current_header.summary_text|safe }}</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container latest-reviews">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://i.ytimg.com/vi/e9al_k8e93I/maxresdefault.jpg)">
+
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://egmr.net/wp-content/gallery/14-oct-2014-preview-far-cry-4/far-cry-4-egmr-9.jpg)">
+                            <h1 class="text-center card-heading">Far Cry 4</h1>
+                            <p class="text-center card-subheading">Far Cry 3 was one of the best games of 2013, But can this game match the title?</p>
+                            <br>
+                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/erikkain/files/2014/10/daI-cover.jpg)">
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://image.jeuxvideo.com/medias/142133/1421332852-1714-card.jpg)">
+                            <h1 class="text-center card-heading">Dragon Age Inquisition</h1>
+                            <p class="text-center card-subheading">EA has had a rough patch with the last dragon age game. Can this one live up to the hype?</p>
+                            <br>
+                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/insertcoin/files/2015/01/dying-light4.jpeg)">
+                        </div>
+                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://i.kinja-img.com/gawker-media/image/upload/s--Bab2-fHp--/t0z7gkfiysgnecush2ai.jpg)">
+                            <h1 class="text-center card-heading">Dying Light</h1>
+                            <p class="text-center card-subheading">The latest from techland's, is the game that they always wanted to make? Or another failure in terms of hype?</p>
+                            <br>
+                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container more-reviews">
+        <h1 class="text-center">Check Out More Reviews</h1>
+        <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
+        <button href="#menu-toggle" id="menu-toggle" type="button" class="btn {{ current_header.theme_choice }} btn-lg center-block">Click Here for More</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="outro-header" style="background-image: url({{ current_header.footer_cover }})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright white-text">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{%  static "cleanBootstrap/js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "cleanBootstrap/js/clean-blog.min.js" %}"></script>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</div>
+</body>
+
 </html>
