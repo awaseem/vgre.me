@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='header',
             name='theme_choice',
-            field=models.CharField(default=b'btn-default', max_length=10, choices=[(b'btn-default', b'Blue'), (b'btn-success', b'Green'), (b'btn-info', b'Light Blue'), (b'btn-warning', b'Yellow'), (b'btn-danger', b'Red')]),
+            field=models.CharField(default=b'btn-default', max_length=20, choices=[(b'btn-default', b'Blue'), (b'btn-success', b'Green'), (b'btn-info', b'Light Blue'), (b'btn-warning', b'Yellow'), (b'btn-danger', b'Red')]),
             preserve_default=True,
         ),
     ]
