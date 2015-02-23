@@ -20,7 +20,7 @@ class Header(models.Model):
     title_text = models.CharField(max_length=200, blank=False,
                                   help_text="Please enter a heading for the reviews section")
     summary_text = models.TextField(blank=False, help_text="Please enter a summary for the reviews section")
-    theme_choice = models.CharField(max_length=20, choices=THEME_COLOR, default="btn-default", blank=False,
+    theme_choice = models.CharField(max_length=20, choices=THEME_COLOR, default="btn-primary", blank=False,
                                     verbose_name="Theme", help_text="Color theme for the featured game")
     menu_background = models.CharField(max_length=10, default="#337ab7")
     header_cover = models.URLField(blank=False, help_text="Please enter A URL of a picture you'd like for the header")
