@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.encoding import force_bytes
+from tinymce.models import HTMLField
 # Create your models here.
 
 
@@ -19,7 +20,7 @@ class Header(models.Model):
     sub_heading = models.CharField(max_length=200, blank=False, help_text="Please enter a sub heading")
     title_text = models.CharField(max_length=200, blank=False,
                                   help_text="Please enter a heading for the reviews section")
-    summary_text = models.TextField(blank=False, help_text="Please enter a summary for the reviews section")
+    summary_text = HTMLField(blank=False, help_text="Please enter a summary for the reviews section")
     theme_choice = models.CharField(max_length=20, choices=THEME_COLOR, default="btn-primary", blank=False,
                                     verbose_name="Theme", help_text="Color theme for the featured game")
     menu_background = models.CharField(max_length=10, default="#337ab7")

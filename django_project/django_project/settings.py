@@ -53,11 +53,17 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "tinymce",
-    'django_wysiwyg',
-    "home"
+    "home",
+    "article",
 )
 
-DJANGO_WYSIWYG_FLAVOR = "tinymce"
+TINYMCE_DEFAULT_CONFIG = {
+    "plugins": "spellchecker",
+    "theme": "simple",
+    "browser_spellcheck": "True"
+}
+
+TINYMCE_SPELLCHECKER = True
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

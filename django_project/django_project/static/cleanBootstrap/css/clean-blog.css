@@ -26,10 +26,16 @@ h6 {
   font-weight: 800;
 }
 a {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  color: #404040;
 }
-
+a:hover,
+a:focus {
+  color: #0085a1;
+}
+a img:hover,
+a img:focus {
+  cursor: zoom-in;
+}
 blockquote {
   color: #808080;
   font-style: italic;
@@ -139,14 +145,14 @@ hr.small {
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-  padding: 100px 0 50px;
+  padding: 85px 0 50px;
   color: white;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 150px 0;
+    padding: 135px 0;
   }
 }
 .intro-header .site-heading,
@@ -257,7 +263,18 @@ hr.small {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-
+footer {
+  padding: 50px 0 65px;
+}
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+footer .copyright {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 0;
+}
 .floating-label-form-group {
   font-size: 14px;
   position: relative;
@@ -325,6 +342,7 @@ form .row:first-child .floating-label-form-group {
 .btn-default:focus {
   background-color: #0085a1;
   border: 1px solid #0085a1;
+  color: white;
 }
 .pager {
   margin: 20px 0 0;
