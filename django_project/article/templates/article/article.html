@@ -37,7 +37,7 @@
 <body>
 <div id="wrapper" class="toggled">
 
-    <div id="sidebar-wrapper" style="background-color: {{ current_header.menu_background }}">
+    <div id="sidebar-wrapper" style="background-color: {{ article.game_menu_color }}">
         <ul class="sidebar-nav">
             <li class="sidebar-brand white-text">
                 <h3>Start Bootstrap</h3>
@@ -58,11 +58,11 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <div id="page-content-wrapper">
-    <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(http://gearnuke.com/wp-content/uploads/2015/01/FC4_PREVIEWS_KARMA_EVENT_02.0.jpg)">
+    <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url({{ article.header_image }})">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <button class="btn {{ current_header.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+                    <button class="btn {{ article.game_theme }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
                 </div>
             </div>
         </div>
@@ -70,9 +70,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Man must explore, and this is exploration at its greatest</h1>
-                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+                        <h1>{{ article.article_heading }}</h1>
+                        <h2 class="subheading">{{ article.article_sub_heading }}</h2>
+                        <span class="meta">Posted by {{ article.created_name }} on {{ article.published_date }}</span>
                     </div>
                 </div>
             </div>
@@ -84,69 +84,51 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-
-                    <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
-
-                    <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
-
-                    <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
-
-                    <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
-
-                    <video width="100%" height="auto" autoplay loop>
-                        <source src="http://fat.gfycat.com/AccomplishedCreativeBoaconstrictor.webm" type="video/webm">
-                        <source src="http://fat.gfycat.com/AccomplishedCreativeBoaconstrictor.mp4" type="video/mp4">
-                        Video is not supported on your browser
-                    </video>
-
-                    <h2 class="section-heading">The Final Frontier</h2>
-
-                    <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-                    <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-                    <blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-
-                    <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-
-                    <h2 class="section-heading">Reaching for the Stars</h2>
-
-                    <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-                    <img class="img-responsive" src="http://cdn3-www.playstationlifestyle.net/assets/uploads/gallery/far-cry-4/fc4_screen_kyrat_sniper_gc_140813_10amcet_1407889621.jpg" alt="">
-
-                    <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-                    <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-                    <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-                    <p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+                    {% for section in article.sections_set.all %}
+                        {% if section.section_heading %}
+                            <h2 class="section-heading">{{ section.section_heading }}</h2>
+                        {% endif %}
+                        {% if section.section_body %}
+                            {{ section.section_body|safe }}
+                        {% endif %}
+                        {% if section.image_url %}
+                            <img class="img-responsive" src="{{ section.image_url }}" alt="">
+                            {% if section.image_subheading %}
+                                <span class="caption text-muted">{{ section.image_subheading }}</span>
+                            {% endif %}
+                        {% endif %}
+                        {% if section.gif_url %}
+                            <video width="100%" height="auto" autoplay loop>
+                                <source src="{{ section.gif_url }}.webm" type="video/webm">
+                                <source src="{{ section.gif_url }}.mp4" type="video/mp4">
+                                Video is not supported on your browser
+                            </video>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </article>
 
     <!-- Footer -->
-    <footer class="outro-header" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(http://static4.gamespot.com/uploads/screen_kubrick/1369/13695253/2626252-gamescom2014_farcry4camdanny_v3_20140812.jpg)">
+    <footer class="outro-header" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url({{ article.footer_image }})">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div id="circle" class="center-block" style="background-image: url('http://bygghjalphemma.se/wp-content/uploads/2014/11/bill-gates-wealthiest-person.jpg')">
                     </div>
                     <div class="text-center white-text">
-                        <h5>Ali Waseem</h5>
+                        <h5>{{ article.created_name }}</h5>
                         <h5>Electrical Engineer, Creator</h5>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="white-text">
-                        <h2 class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et</h2>
+                        <h2 class="subheading">{{ article.review_summary }}</h2>
                     </div>
                 </div>
             </div>
-            <div class="center-block white-text" id="myStat" data-dimension="300" data-text="8" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ current_header.menu_background }}" data-bgcolor="transparent" data-total="10" data-part="8" data-bordersize="0"></div>
+            <div class="center-block white-text" id="myStat" data-dimension="300" data-text="{{ article.review_score }}" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ article.game_menu_color }}" data-bgcolor="transparent" data-total="10" data-part="{{ article.review_score }}" data-bordersize="0"></div>
         </div>
     </footer>
     </div>

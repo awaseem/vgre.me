@@ -4,6 +4,6 @@ from article import views
 
 urlpatterns = patterns("",
 
-    url(r"test", views.article, name="article")
+    url(r"^(?P<game_id>[\w ]+)/$", views.article, name="article")
 
 )

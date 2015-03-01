@@ -81,49 +81,24 @@
     <!-- Main Content -->
     <div class="container latest-reviews">
         <div class="row">
-            <div class="col-md-4">
-                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(http://i.ytimg.com/vi/e9al_k8e93I/maxresdefault.jpg)">
-
-                        </div>
-                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://egmr.net/wp-content/gallery/14-oct-2014-preview-far-cry-4/far-cry-4-egmr-9.jpg)">
-                            <h1 class="text-center card-heading">Far Cry 4</h1>
-                            <p class="text-center card-subheading">Far Cry 3 was one of the best games of 2013, But can this game match the title?</p>
-                            <br>
-                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/erikkain/files/2014/10/daI-cover.jpg)">
-                        </div>
-                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://image.jeuxvideo.com/medias/142133/1421332852-1714-card.jpg)">
-                            <h1 class="text-center card-heading">Dragon Age Inquisition</h1>
-                            <p class="text-center card-subheading">EA has had a rough patch with the last dragon age game. Can this one live up to the hype?</p>
-                            <br>
-                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
+            {% for article in current_articles %}
+                <div class="col-md-4">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="front" style="background-image: url({{ article.game_review_cover }})">
+                            </div>
+                            <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url({{ article.game_review_back_cover }})">
+                                <h1 class="text-center card-heading">{{ article.game_name }}</h1>
+                                <p class="text-center card-subheading">{{ article.game_review_description }}</p>
+                                <br>
+                                <div class="text-center">
+                                    <a href="{% url "article" article.game_name %}" type="button" class="btn {{ current_header.theme_choice }}">Learn More</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
-                    <div class="flipper">
-                        <div class="front" style="background-image: url(http://blogs-images.forbes.com/insertcoin/files/2015/01/dying-light4.jpeg)">
-                        </div>
-                        <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://i.kinja-img.com/gawker-media/image/upload/s--Bab2-fHp--/t0z7gkfiysgnecush2ai.jpg)">
-                            <h1 class="text-center card-heading">Dying Light</h1>
-                            <p class="text-center card-subheading">The latest from techland's, is the game that they always wanted to make? Or another failure in terms of hype?</p>
-                            <br>
-                            <button type="button" class="btn {{ current_header.theme_choice }} center-block">Learn More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
