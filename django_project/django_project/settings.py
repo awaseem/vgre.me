@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     "tinymce",
     "home",
     "article",
+    "users",
 )
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -105,7 +106,7 @@ else:
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Edmonton'
 
 USE_I18N = True
 

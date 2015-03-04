@@ -32,7 +32,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
     inlines = [SectionsInLine]
 
-    list_display = ("create_date", "game_name", "review_status", "published_status", "published_date")
+    list_display = ("create_date", "game_name", "review_status", "published_status", "published_date", "last_modified_user")
 
     list_filter = ("create_date", "game_name", "review_status", "published_status")
 
@@ -75,6 +75,8 @@ class ArticleAdmin(admin.ModelAdmin):
         if not obj.created_user:
             obj.created_user = request.user.get_username()
             obj.created_name = request.user.get_full_name()
+            obj.created_image = request.user.writer.image
+            obj.created_occupation = request.user.writer.occupation
         else:
             obj.last_modified_user = request.user.get_username()
         obj.save()

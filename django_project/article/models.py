@@ -5,7 +5,6 @@ from django.utils.encoding import force_bytes
 
 
 class Article(models.Model):
-
     THEME_COLOR = (
         ("btn-primary", "Blue"),
         ("btn-success", "Green"),
@@ -19,6 +18,8 @@ class Article(models.Model):
     created_user = models.CharField(max_length=200, blank=True)
     last_modified_user = models.CharField(max_length=200, blank=True)
     created_name = models.CharField(max_length=200, blank=True)
+    created_image = models.URLField(blank=True)
+    created_occupation = models.CharField(max_length=100, blank=True)
 
     create_date = models.DateTimeField("Date created", auto_now_add=True)
     published_date = models.DateTimeField("Date published", null=True)
@@ -57,4 +58,5 @@ class Sections(models.Model):
     image_subheading = models.CharField(blank=True, max_length=100,
                                         help_text="Enter the sub-heading for this sections image")
     gif_url = models.URLField(blank=True, help_text="Enter the URL for this sections gif (html video only)")
-    gif_subheading = models.URLField(blank=True, help_text="Enter the sub-heading for this sections gif")
+    gif_subheading = models.CharField(blank=True, max_length=100,
+                                      help_text="Enter the sub-heading for this sections gif")

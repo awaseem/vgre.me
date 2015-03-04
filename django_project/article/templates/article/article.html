@@ -115,11 +115,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div id="circle" class="center-block" style="background-image: url('http://bygghjalphemma.se/wp-content/uploads/2014/11/bill-gates-wealthiest-person.jpg')">
+                    <div id="circle" class="center-block" style="background-image: url({{ article.created_image }})">
                     </div>
                     <div class="text-center white-text">
                         <h5>{{ article.created_name }}</h5>
-                        <h5>Electrical Engineer, Creator</h5>
+                        <h5>{{ article.created_occupation }}</h5>
                     </div>
                 </div>
                 <div class="col-md-8">
