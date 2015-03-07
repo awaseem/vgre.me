@@ -33,36 +33,144 @@
 
 </head>
 <body>
-<form action="{% url "reviews" %}" method="post">
-    {% csrf_token %}
-    <input name="search_query">
-    <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
-</form>
-{% if results %}
-    {% for result in results %}
-        {{ result.meta.game_name }}
-    {% endfor %}
-{% endif %}
-<!-- jQuery -->
-<script src="{% static "cleanBootstrap/js/jquery.js" %}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+    <header class="intro-header" style="background-image: url({{ current_header.header_cover }})">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Search</h1>
+                        <hr class="small">
+                        <span class="subheading">Find a particular review</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<!-- Custom Theme JavaScript -->
-<script src="{% static "circleiful/jquery.circliful.js" %}"></script>
+    <form action="{% url "reviews" %}" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div id="imaginary_container">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" name="search_query" placeholder="Search" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
-<script>
-    $( document ).ready(function() {
-        $('#myStat').circliful();
-    });
-</script>
+    <div class="container latest-reviews">
+        <div class="row">
+            {% if results %}
+                {% for result in results %}
+                    <div class="col-md-4">
+                        <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front" style="background-image: url({{ result.meta.game_review_cover }})">
+                                </div>
+                                <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url({{ result.meta.game_review_back_cover }})">
+                                    <h1 class="text-center card-heading">{{ result.meta.game_name }}</h1>
+                                    <p class="text-center card-subheading">{{ result.meta.game_review_description }}</p>
+                                    <br>
+                                    <div class="text-center">
+                                        <a href="{% url "article" result.meta.game_name %}" type="button" class="btn {{ current_header.theme_choice }}">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% elif err_message %}
+                <h1 class="text-center">{{ err_message }}</h1>
+            {% else %}
+                {% for article in current_articles %}
+                    <div class="col-md-4">
+                        <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front" style="background-image: url({{ article.game_review_cover }})">
+                                </div>
+                                <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url({{ article.game_review_back_cover }})">
+                                    <h1 class="text-center card-heading">{{ article.game_name }}</h1>
+                                    <p class="text-center card-subheading">{{ article.game_review_description }}</p>
+                                    <br>
+                                    <div class="text-center">
+                                        <a href="{% url "article" article.game_name %}" type="button" class="btn {{ current_header.theme_choice }}">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
+    <footer class="outro-header" style="background-image: url({{ current_header.footer_cover }})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright white-text">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static "cleanBootstrap/js/jquery.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "circleiful/jquery.circliful.js" %}"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $('#myStat').circliful();
+        });
+    </script>
+
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
+
 </html>
