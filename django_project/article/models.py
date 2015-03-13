@@ -5,13 +5,6 @@ from django.utils.encoding import force_bytes
 
 
 class Article(models.Model):
-    THEME_COLOR = (
-        ("btn-primary", "Blue"),
-        ("btn-success", "Green"),
-        ("btn-info", "Light Blue"),
-        ("btn-warning", "Yellow"),
-        ("btn-danger", "Red")
-    )
 
     SCORE_CHOICES = zip(range(0, 11), range(0, 11))
 
@@ -32,19 +25,15 @@ class Article(models.Model):
                                                help_text="Enter a short description about the game review (homepage)")
     game_review_cover = models.URLField(blank=False, help_text="Enter an image for the game cover (homepage)")
     game_review_back_cover = models.URLField(blank=False, help_text="Enter an image for the back game cover (homepage)")
-    game_theme = models.CharField(max_length=20, blank=False, choices=THEME_COLOR,
-                                  help_text="Enter a color theme for this review",
-                                  default="btn-primary")
-    game_menu_color = models.CharField(max_length=10, default="#337ab7")
 
+    header_image = models.URLField(blank=False, help_text="Enter the URL for a header image")
     article_heading = models.CharField(max_length=50, blank=False, help_text="Article heading")
     article_sub_heading = models.CharField(max_length=50, blank=False, help_text="Article sub heading")
-    header_image = models.URLField(blank=False, help_text="Enter the URL for a header image")
 
+    footer_image = models.URLField(blank=False, help_text="Enter the URL for a footer image")
     review_summary = models.TextField(blank=False, help_text="Enter a summary for this game review")
     review_score = models.IntegerField(blank=False, help_text="Enter a review score for this game",
                                        choices=SCORE_CHOICES)
-    footer_image = models.URLField(blank=False, help_text="Enter the URL for a footer image")
 
     def __str__(self):
         return force_bytes("%s" % self.game_name)

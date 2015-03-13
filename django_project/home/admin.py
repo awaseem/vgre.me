@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.messages import constants as messages
-from home.models import Header
+from home.models import Theme
 
 COLOR_CODES = {
     "Blue": "#337ab7",
@@ -11,42 +11,42 @@ COLOR_CODES = {
 }
 
 
-class HeaderAdmin(admin.ModelAdmin):
+class ThemeAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Theme", {
-            "fields": ["theme_name", "header_cover", "footer_cover", "theme_choice"],
+            "fields": ["theme_name", "theme_choice"],
         }),
-        ("Header", {
-            "fields": ["main_heading", "sub_heading"]
+        ("Home", {
+            "fields": ["home_header_cover", "home_footer_cover"]
         }),
-        ("Body", {
-            "fields": ["title_text", "summary_text"]
+        ("Search", {
+            "fields": ["search_header_cover", "search_footer_cover"]
         }),
     ]
 
-    list_display = ('pub_date', 'theme_name', 'current_header')
+    list_display = ('pub_date', 'theme_name', 'current_theme')
 
     list_filter = ('pub_date', 'theme_name')
 
-    actions = ["make_current_header"]
+    actions = ["make_current_theme"]
 
-    def make_current_header(self, request, queryset):
+    def make_current_theme(self, request, queryset):
         if len(queryset) == 1:
-            Header.objects.update(current_header=False)
-            queryset.update(current_header=True)
+            Theme.objects.update(current_theme=False)
+            queryset.update(current_theme=True)
         else:
             self.message_user(request,
-                              "ERROR: you can only select one header for this action, you've selected %s" % len(
+                              "ERROR: you can only select one theme for this action, you've selected %s" % len(
                                   queryset),
                               level=messages.ERROR)
 
-    make_current_header.short_description = "Set as Current Header"
+    make_current_theme.short_description = "Set as Current Theme"
 
     def save_model(self, request, obj, form, change):
-        if Header.objects.count() == 0:
-            obj.current_header = True
+        if Theme.objects.count() == 0:
+            obj.current_theme = True
         obj.menu_background = COLOR_CODES[obj.get_theme_choice_display()]
         obj.save()
 
 
-admin.site.register(Header, HeaderAdmin)
+admin.site.register(Theme, ThemeAdmin)

@@ -37,7 +37,7 @@
 <body>
 <div id="wrapper" class="toggled">
 
-    <div id="sidebar-wrapper" style="background-color: {{ article.game_menu_color }}">
+    <div id="sidebar-wrapper" style="background-color: {{ theme.menu_background }}">
         <ul class="sidebar-nav">
             <li class="sidebar-brand white-text">
                 <h3>Start Bootstrap</h3>
@@ -62,7 +62,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <button class="btn {{ article.game_theme }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+                    <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="center-block white-text" id="myStat" data-dimension="300" data-text="{{ article.review_score }}" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ article.game_menu_color }}" data-bgcolor="transparent" data-total="10" data-part="{{ article.review_score }}" data-bordersize="0"></div>
+            <div class="center-block white-text" id="myStat" data-dimension="300" data-text="{{ article.review_score }}" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ theme.menu_background }}" data-bgcolor="transparent" data-total="10" data-part="{{ article.review_score }}" data-bordersize="0"></div>
         </div>
     </footer>
     </div>

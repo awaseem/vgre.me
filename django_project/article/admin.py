@@ -3,14 +3,6 @@ from article.models import Article, Sections
 from django.utils import timezone
 # Register your models here.
 
-COLOR_CODES = {
-    "Blue": "#337ab7",
-    "Green": "#5cb85c",
-    "Yellow": "#f0ad4e",
-    "Light Blue": "#5bc0de",
-    "Red": "#d9534f"
-}
-
 class SectionsInLine(admin.StackedInline):
     model = Sections
     extra = 0
@@ -19,8 +11,7 @@ class SectionsInLine(admin.StackedInline):
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Game", {
-            "fields": ["game_name", "game_review_description", "game_review_cover", "game_review_back_cover",
-                       "game_theme"]
+            "fields": ["game_name", "game_review_description", "game_review_cover", "game_review_back_cover"]
         }),
         ("Header", {
             "fields": ["article_heading", "article_sub_heading", "header_image"]
@@ -71,7 +62,6 @@ class ArticleAdmin(admin.ModelAdmin):
     toggle_review.short_description = "Review/not review article"
 
     def save_model(self, request, obj, form, change):
-        obj.game_menu_color = COLOR_CODES[obj.get_game_theme_display()]
         if not obj.created_user:
             obj.created_user = request.user.get_username()
             obj.created_name = request.user.get_full_name()

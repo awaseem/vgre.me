@@ -19,7 +19,7 @@
     <link href="{% static "cleanBootstrap/css/clean-blog.min.css" %}" rel="stylesheet">
     <link href="{% static "cleanBootstrap/css/styles.css" %}" rel="stylesheet">
     <link href="{% static "owl-carousel/owl.carousel.css" %}" rel="stylesheet">
-    <link href="{% static "side-bar/css/simple-sidebar.css" %}" rel="stylesheet"></link>
+    <link href="{% static "side-bar/css/simple-sidebar.css" %}" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@
 <body>
 <div id="wrapper" class="toggled">
 
-    <div id="sidebar-wrapper" style="background-color: {{ current_header.menu_background }}">
+    <div id="sidebar-wrapper" style="background-color: {{ theme.menu_background }}">
         <ul class="sidebar-nav">
             <li class="sidebar-brand white-text">
                 <h3>Start Bootstrap</h3>
@@ -55,18 +55,18 @@
         </ul>
     </div>
 
-    <div id="page-content-wrapper">
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url({{ current_header.header_cover }})">
+    <div id="page-content-wrapper">
+    <header class="intro-header" style="background-image: url({{ theme.home_header_cover }})">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <button class="btn {{ current_header.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+                    <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
                     <div class="site-heading">
-                        <h1>{{ current_header.main_heading }}</h1>
+                        <h1>Welcome</h1>
                         <hr class="small">
-                        <span class="subheading">{{ current_header.sub_heading }}</span>
+                        <span class="subheading">{{ current_articles.0.game_name }} is the latest review</span>
                     </div>
                 </div>
             </div>
@@ -74,8 +74,8 @@
     </header>
 
     <div class="container text-center">
-        <h1>{{ current_header.title_text}}</h1>
-        <p>{{ current_header.summary_text|safe }}</p>
+        <h1>New Reviews</h1>
+        <p>Check out these great reviews</p>
     </div>
 
     <!-- Main Content -->
@@ -92,7 +92,7 @@
                                 <p class="text-center card-subheading">{{ article.game_review_description }}</p>
                                 <br>
                                 <div class="text-center">
-                                    <a href="{% url "article" article.game_name %}" type="button" class="btn {{ current_header.theme_choice }}">Learn More</a>
+                                    <a href="{% url "article" article.game_name %}" type="button" class="btn {{ theme.theme_choice }}">Learn More</a>
                                 </div>
                             </div>
                         </div>
@@ -105,11 +105,13 @@
     <div class="container more-reviews">
         <h1 class="text-center">Check Out More Reviews</h1>
         <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
-        <button href="#menu-toggle" id="menu-toggle" type="button" class="btn {{ current_header.theme_choice }} btn-lg center-block">Click Here for More</button>
+        <div class="text-center">
+            <a href="{% url "search" %}" type="button" class="btn {{ theme.theme_choice }} btn-lg">Click Here for More</a>
+        </div>
     </div>
 
     <!-- Footer -->
-    <footer class="outro-header" style="background-image: url({{ current_header.footer_cover }})">
+    <footer class="outro-header" style="background-image: url({{ theme.home_footer_cover }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -145,15 +147,11 @@
         </div>
     </footer>
     </div>
-
     <!-- jQuery -->
     <script src="{%  static "cleanBootstrap/js/jquery.js" %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="{% static "cleanBootstrap/js/clean-blog.min.js" %}"></script>
 
     <script>
     $("#menu-toggle").click(function(e) {
@@ -161,7 +159,6 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-
 </div>
 </body>
 
