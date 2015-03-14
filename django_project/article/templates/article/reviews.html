@@ -58,16 +58,20 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
                     <div class="site-heading">
-                        <h1>Search</h1>
-                        <hr class="small">
-                        <span class="subheading">Find a particular review</span>
+                        {% if results %}
+                            <h1 id="header-text">Results</h1>
+                        {% else %}
+                            <h1 id="header-text">Search</h1>
+                        {% endif %}
+                        <hr id="header-bar" class="small">
+                        <span id="header-subtext" class="subheading">Find a particular review</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <form action="{% url "search" %}" method="post">
+    <form id="search-bar" action="{% url "search" %}" method="post">
         {% csrf_token %}
         <div class="container">
             <div class="row">
@@ -178,6 +182,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static "circleiful/jquery.circliful.js" %}"></script>
+
+    <script src="{% static "search/search.js" %}"></script>
 
     <script>
         $( document ).ready(function() {

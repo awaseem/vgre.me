@@ -44,7 +44,7 @@
             </li>
             <hr class="small">
             <li>
-                <a href={% url "index" %}#">Home</a>
+                <a href={% url "index" %}>Home</a>
             </li>
             <li>
                 <a href="{% url "search" %}">Reviews</a>
@@ -58,94 +58,94 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <div id="page-content-wrapper">
-    <header class="intro-header" style="background-image: url({{ theme.home_header_cover }})">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
-                    <div class="site-heading">
-                        <h1>Welcome</h1>
-                        <hr class="small">
-                        <span class="subheading">{{ current_articles.0.game_name }} is the latest review</span>
+        <header class="intro-header" style="background-image: url({{ theme.home_header_cover }}); opacity: 0.5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
+                        <div class="site-heading">
+                            <h1 id="header-text">Welcome</h1>
+                            <hr id="header-bar" class="small">
+                            <span class="subheading" id="header-subtext">{{ current_articles.0.game_name }} is the latest review</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </header>
+
+        <div class="container text-center">
+            <h1>New Reviews</h1>
+            <p>Check out these great reviews</p>
         </div>
-    </header>
 
-    <div class="container text-center">
-        <h1>New Reviews</h1>
-        <p>Check out these great reviews</p>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container latest-reviews">
-        <div class="row">
-            {% for article in current_articles %}
-                <div class="col-md-4">
-                    <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
-                        <div class="flipper">
-                            <div class="front" style="background-image: url({{ article.game_review_cover }})">
-                            </div>
-                            <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url({{ article.game_review_back_cover }})">
-                                <h1 class="text-center card-heading">{{ article.game_name }}</h1>
-                                <p class="text-center card-subheading">{{ article.game_review_description }}</p>
-                                <br>
-                                <div class="text-center">
-                                    <a href="{% url "article" article.game_name %}" type="button" class="btn {{ theme.theme_choice }}">Learn More</a>
+        <!-- Main Content -->
+        <div class="container latest-reviews">
+            <div class="row">
+                {% for article in current_articles %}
+                    <div class="col-md-4">
+                        <div class="flip-container center-block" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                <div class="front" style="background-image: url({{ article.game_review_cover }})">
+                                </div>
+                                <div class="back" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url({{ article.game_review_back_cover }})">
+                                    <h1 class="text-center card-heading">{{ article.game_name }}</h1>
+                                    <p class="text-center card-subheading">{{ article.game_review_description }}</p>
+                                    <br>
+                                    <div class="text-center">
+                                        <a href="{% url "article" article.game_name %}" type="button" class="btn {{ theme.theme_choice }}">Learn More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
-    <div class="container more-reviews">
-        <h1 class="text-center">Check Out More Reviews</h1>
-        <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
-        <div class="text-center">
-            <a href="{% url "search" %}" type="button" class="btn {{ theme.theme_choice }} btn-lg">Click Here for More</a>
+        <div class="container more-reviews">
+            <h1 class="text-center">Check Out More Reviews</h1>
+            <p class="text-center">Didn't find the game you were looking for? Check out more great reviews here!</p>
+            <div class="text-center">
+                <a href="{% url "search" %}" type="button" class="btn {{ theme.theme_choice }} btn-lg">Click Here for More</a>
+            </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="outro-header" style="background-image: url({{ theme.home_footer_cover }})">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
+        <!-- Footer -->
+        <footer class="outro-header" style="background-image: url({{ theme.home_footer_cover }})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright white-text">Copyright &copy; Your Website 2014</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copyright white-text">Copyright &copy; Your Website 2014</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     </div>
     <!-- jQuery -->
     <script src="{%  static "cleanBootstrap/js/jquery.js" %}"></script>
@@ -156,10 +156,10 @@
     <script src="{% static "home/home.js" %}"></script>
 
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 </div>
 </body>

@@ -58,79 +58,79 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <div id="page-content-wrapper">
-    <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url({{ article.header_image }})">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <h1>{{ article.article_heading }}</h1>
-                        <h2 class="subheading">{{ article.article_sub_heading }}</h2>
-                        <span class="meta">Posted by {{ user.get_full_name }} on {{ article.published_date }}</span>
+        <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url({{ article.header_image }})">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <button class="btn {{ theme.theme_choice }}" type="button" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></button>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1 id="header-text">{{ article.article_heading }}</h1>
+                            <h2 id="header-subtext" class="subheading">{{ article.article_sub_heading }}</h2>
+                            <span id="header-posted" class="meta">Posted by {{ user.get_full_name }} on {{ article.published_date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <!-- Post Content -->
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    {% for section in article.sections_set.all %}
-                        {% if section.section_heading %}
-                            <h2 class="section-heading">{{ section.section_heading }}</h2>
-                        {% endif %}
-                        {% if section.section_body %}
-                            {{ section.section_body|safe }}
-                        {% endif %}
-                        {% if section.image_url %}
-                            <img class="img-responsive" src="{{ section.image_url }}" alt="">
-                            {% if section.image_subheading %}
-                                <span class="caption text-muted">{{ section.image_subheading }}</span>
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        {% for section in article.sections_set.all %}
+                            {% if section.section_heading %}
+                                <h2 class="section-heading">{{ section.section_heading }}</h2>
                             {% endif %}
-                        {% endif %}
-                        {% if section.gif_url %}
-                            <video width="100%" height="auto" autoplay loop>
-                                <source src="{{ section.gif_url }}.webm" type="video/webm">
-                                <source src="{{ section.gif_url }}.mp4" type="video/mp4">
-                                Video is not supported on your browser
-                            </video>
-                        {% endif %}
-                    {% endfor %}
+                            {% if section.section_body %}
+                                {{ section.section_body|safe }}
+                            {% endif %}
+                            {% if section.image_url %}
+                                <img class="img-responsive" src="{{ section.image_url }}" alt="">
+                                {% if section.image_subheading %}
+                                    <span class="caption text-muted">{{ section.image_subheading }}</span>
+                                {% endif %}
+                            {% endif %}
+                            {% if section.gif_url %}
+                                <video width="100%" height="auto" autoplay loop>
+                                    <source src="{{ section.gif_url }}.webm" type="video/webm">
+                                    <source src="{{ section.gif_url }}.mp4" type="video/mp4">
+                                    Video is not supported on your browser
+                                </video>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </article>
+        </article>
 
-    <!-- Footer -->
-    <footer class="outro-header" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url({{ article.footer_image }})">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div id="circle" class="center-block" style="background-image: url({{ user.writer.image }})">
+        <!-- Footer -->
+        <footer class="outro-header" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url({{ article.footer_image }})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="circle" class="center-block" style="background-image: url({{ user.writer.image }})">
+                        </div>
+                        <div class="text-center white-text">
+                            <h5>{{ user.get_full_name}}</h5>
+                            <h5>{{ user.writer.occupation }}</h5>
+                        </div>
                     </div>
-                    <div class="text-center white-text">
-                        <h5>{{ user.get_full_name}}</h5>
-                        <h5>{{ user.writer.occupation }}</h5>
+                    <div class="col-md-8">
+                        <div class="white-text">
+                            <h2 class="subheading">{{ article.review_summary }}</h2>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="white-text">
-                        <h2 class="subheading">{{ article.review_summary }}</h2>
-                    </div>
-                </div>
+                <div class="center-block white-text" id="myStat" data-dimension="300" data-text="{{ article.review_score }}" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ theme.menu_background }}" data-bgcolor="transparent" data-total="10" data-part="{{ article.review_score }}" data-bordersize="0"></div>
             </div>
-            <div class="center-block white-text" id="myStat" data-dimension="300" data-text="{{ article.review_score }}" data-width="15" data-fontsize="56" data-percent="50" data-fgcolor="{{ theme.menu_background }}" data-bgcolor="transparent" data-total="10" data-part="{{ article.review_score }}" data-bordersize="0"></div>
-        </div>
-    </footer>
+        </footer>
     </div>
     <!-- jQuery -->
     <script src="{% static "cleanBootstrap/js/jquery.js" %}"></script>
@@ -142,17 +142,19 @@
     <script src="{% static "cleanBootstrap/js/clean-blog.min.js" %}"></script>
     <script src="{% static "circleiful/jquery.circliful.js" %}"></script>
 
+    <script src="{% static "article/article.js" %}"></script>
+
     <script>
-    $( document ).ready(function() {
+        $( document ).ready(function() {
             $('#myStat').circliful();
         });
     </script>
 
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 </div>
 </body>
