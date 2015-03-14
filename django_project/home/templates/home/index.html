@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 {% load staticfiles %}
 <head>
@@ -44,10 +44,10 @@
             </li>
             <hr class="small">
             <li>
-                <a href="#">Home</a>
+                <a href={% url "index" %}#">Home</a>
             </li>
             <li>
-                <a href="#">Reviews</a>
+                <a href="{% url "search" %}">Reviews</a>
             </li>
             <li>
                 <a href="#">About</a>
@@ -152,6 +152,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+
+    <script src="{% static "home/home.js" %}"></script>
 
     <script>
     $("#menu-toggle").click(function(e) {

@@ -44,10 +44,10 @@
             </li>
             <hr class="small">
             <li>
-                <a href="#">Home</a>
+                <a href="{% url "index" %}">Home</a>
             </li>
             <li>
-                <a href="#">Reviews</a>
+                <a href="{% url "search" %}">Reviews</a>
             </li>
             <li>
                 <a href="#">About</a>
@@ -72,7 +72,7 @@
                     <div class="post-heading">
                         <h1>{{ article.article_heading }}</h1>
                         <h2 class="subheading">{{ article.article_sub_heading }}</h2>
-                        <span class="meta">Posted by {{ article.created_name }} on {{ article.published_date }}</span>
+                        <span class="meta">Posted by {{ user.get_full_name }} on {{ article.published_date }}</span>
                     </div>
                 </div>
             </div>
@@ -115,11 +115,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div id="circle" class="center-block" style="background-image: url({{ article.created_image }})">
+                    <div id="circle" class="center-block" style="background-image: url({{ user.writer.image }})">
                     </div>
                     <div class="text-center white-text">
-                        <h5>{{ article.created_name }}</h5>
-                        <h5>{{ article.created_occupation }}</h5>
+                        <h5>{{ user.get_full_name}}</h5>
+                        <h5>{{ user.writer.occupation }}</h5>
                     </div>
                 </div>
                 <div class="col-md-8">

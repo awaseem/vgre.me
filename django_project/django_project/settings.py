@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 if DIGITAL_OCEAN_PRODUCTION:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': production_settings.get("database", "name"),
             'USER': production_settings.get("database", "user"),
             'PASSWORD': production_settings.get("database", "password"),

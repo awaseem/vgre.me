@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404 ,redirect
+from django.contrib.auth.models import User
 from article.models import Article
 from home.models import Theme
 from watson import search as watsonSearch
@@ -7,9 +8,11 @@ from watson import search as watsonSearch
 def article(request, game_id):
     article_requested = get_object_or_404(Article, published_status=True, game_name=game_id)
     theme = get_object_or_404(Theme, current_theme=True)
+    user = get_object_or_404(User, username=article_requested.created_user)
     context = {
         "article": article_requested,
-        "theme": theme
+        "theme": theme,
+        "user": user
     }
     return render(request, "article/article.html", context)
 

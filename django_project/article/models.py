@@ -10,9 +10,6 @@ class Article(models.Model):
 
     created_user = models.CharField(max_length=200, blank=True)
     last_modified_user = models.CharField(max_length=200, blank=True)
-    created_name = models.CharField(max_length=200, blank=True)
-    created_image = models.URLField(blank=True)
-    created_occupation = models.CharField(max_length=100, blank=True)
 
     create_date = models.DateTimeField("Date created", auto_now_add=True)
     published_date = models.DateTimeField("Date published", null=True)
