@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     "home",
     "article",
     "users",
+    "about",
 )
 
 TINYMCE_DEFAULT_CONFIG = {
