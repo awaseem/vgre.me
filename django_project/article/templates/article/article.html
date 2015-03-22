@@ -84,7 +84,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        {% for section in article.sections_set.all %}
+                        {% for section in sections %}
                             {% if section.section_heading %}
                                 <h2 class="section-heading">{{ section.section_heading }}</h2>
                             {% endif %}
