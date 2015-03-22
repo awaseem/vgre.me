@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.core.mail import send_mail
+from smtplib import SMTPException
 from home.models import Theme
 from about.forms import ContactFrom
 
@@ -8,13 +10,14 @@ def about(request):
     theme = get_object_or_404(Theme, current_theme=True)
 
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = ContactFrom(request.POST)
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            print form.cleaned_data
-            # redirect to a new URL:
+            try:
+                send_mail("New questions from: %s" % form.cleaned_data.get("name"), form.cleaned_data.get("message"),
+                          form.cleaned_data.get("email"), ["waseema393@gmail.com"], fail_silently=False)
+                messages.success(request, "Message Sent Successfully")
+            except SMTPException:
+                messages.error(request, "Uh Oh! Something went wrong when trying to send your message")
             return redirect("about")
     else:
         form = ContactFrom()
@@ -23,4 +26,5 @@ def about(request):
         "theme": theme,
         "form": form
     }
+
     return render(request, "about/contact.html", context)

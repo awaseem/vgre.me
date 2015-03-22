@@ -42,9 +42,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ["104.131.170.176"]
 
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,7 +81,6 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
 if DIGITAL_OCEAN_PRODUCTION:
     DATABASES = {
         'default': {
@@ -105,7 +102,6 @@ else:
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Edmonton'
@@ -116,10 +112,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Email sender configuration
+if DIGITAL_OCEAN_PRODUCTION:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = production_settings.get("email", "host")
+    EMAIL_HOST_USER = production_settings.get("email", "user")
+    EMAIL_HOST_PASSWORD = production_settings.get("email", "password")
+    EMAIL_PORT = production_settings.get("email", "port")
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'django_project/static'),
 )

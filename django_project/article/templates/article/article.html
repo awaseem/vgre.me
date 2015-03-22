@@ -50,7 +50,7 @@
                 <a href="{% url "search" %}">Reviews</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="{% url "about" %}">About</a>
             </li>
         </ul>
     </div>
@@ -80,7 +80,7 @@
         </header>
 
         <!-- Post Content -->
-        <article>
+        <article id="main-content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -98,7 +98,7 @@
                                 {% endif %}
                             {% endif %}
                             {% if section.gif_url %}
-                                <video width="100%" height="auto" autoplay loop>
+                                <video width="100%" height="auto" autoplay controls loop>
                                     <source src="{{ section.gif_url }}.webm" type="video/webm">
                                     <source src="{{ section.gif_url }}.mp4" type="video/mp4">
                                     Video is not supported on your browser

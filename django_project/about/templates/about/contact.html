@@ -70,9 +70,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <div class="page-heading">
-                            <h1>Contact Me</h1>
-                            <hr class="small">
-                            <span class="subheading">Have questions? I have answers (maybe).</span>
+                            <h1 id="header-text">About</h1>
+                            <hr id="header-bar" class="small">
+                            <span id="header-subtext" class="subheading">Agree or Disagree? let me know.</span>
                         </div>
                     </div>
                 </div>
@@ -80,44 +80,71 @@
         </header>
 
         <!-- Main Content -->
-        <div class="container">
+        <div id="main-content" class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p>Want to get in touch with me? Fill out the form below to send me a message and I will try to get back to you within 24 hours!</p>
-                    <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-                    <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-                    <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                    <form id="contactForm" action="{% url "about" %}" method="post">
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="{{ form.name.id_for_label }}">Name</label>
-                                <input type="text" class="form-control" placeholder="Name" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" required data-validation-required-message="Please enter a name">
-                                {{ form.name.errors }}
+                    <h1>What is Vgre.me?</h1>
+                    <p>
+                        Vgre.me is a game review website that gives you my perspective on video games.
+                        It's not my job to review video games nor do I make any money from this website.
+                        All reviews I post are my personal opinion, and if you disagree let me know :)
+                    </p>
+
+                    <h1>Who Am I?</h1>
+                    <p>
+                        My name is Ali Waseem. I grew up in Calgary, Alberta, Canada and playing video games is my hobby.
+                        I studied at the University of Calgary as an Electrical Engineering with a Minor in Computer Engineering and I love to program and tinker with technology.
+                    </p>
+
+                    <h1>Made with <3</h1>
+                    <p>Vgre.me is created with the popular web framework Django, Bootstrap and Iron Summit Media's Clean blog template. Check out the Git repositories for
+                        <a href="https://github.com/django/django">Django</a>
+                        and
+                        <a href="https://github.com/IronSummitMedia/startbootstrap-clean-blog">Clean Blog</a>
+                        for your next project!
+                    </p>
+
+                    <h1>Contact Me</h1>
+                    <p>Agree or disagree with my reviews? Fill out the form below to send me a message and I will try to get back to you within 24 hours!</p>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                <strong>{{ message }}</strong>
                             </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="{{ form.email.id_for_label }}">Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required data-validation-required-message="Please enter an email address.">
-                                {{ form.email.errors }}
+                        {% endfor %}
+                    {% else %}
+                        <form id="contactForm" action="{% url "about" %}" method="post">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label for="{{ form.name.id_for_label }}">Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" required data-validation-required-message="Please enter a name">
+                                    {{ form.name.errors }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="{{ form.message.id_for_label }}">Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" required data-validation-required-message="Please enter a message."></textarea>
-                                {{ form.message.errors }}
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label for="{{ form.email.id_for_label }}">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Email Address" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required data-validation-required-message="Please enter an email address.">
+                                    {{ form.email.errors }}
+                                </div>
                             </div>
-                        </div>
-                        <br>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-lg {{ theme.theme_choice }} center-block">Send</button>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label for="{{ form.message.id_for_label }}">Message</label>
+                                    <textarea rows="5" class="form-control" placeholder="Message" id="{{ form.message.id_for_label }}" name="{{ form.message.html_name }}" required data-validation-required-message="Please enter a message."></textarea>
+                                    {{ form.message.errors }}
+                                </div>
                             </div>
-                        </div>
-                        {% csrf_token %}
-                    </form>
+                            <br>
+                            <div id="success"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn {{ theme.theme_choice }} center-block">Send</button>
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -154,7 +181,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
                     </div>
                 </div>
             </div>
@@ -166,6 +192,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "cleanBootstrap/js/bootstrap.min.js" %}"></script>
+
+    <script src="{% static "about/about.js" %}"></script>
 
     <script>
         $("#menu-toggle").click(function(e) {

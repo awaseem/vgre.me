@@ -3,8 +3,7 @@
  */
 
 $(document).ready(function() {
-    $("#header-text, #header-posted, #header-subtext, #menu-toggle").css({opacity: 0});
-    $("header, footer").css({opacity: 0}).delay(500).fadeTo(1000, 1, function() {
+    $("header, footer").delay(500).fadeTo(1000, 1, function() {
         $("#menu-toggle").fadeTo(1000, 1);
         $("#header-text").fadeTo(500, 1, function () {
             $("#header-subtext").delay(500).fadeTo(500, 1, function() {
@@ -13,19 +12,19 @@ $(document).ready(function() {
         });
     });
 
-  	//Check to see if the window is top if not then display button
+  	//Check to find scrolling to display button/text
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 350) {
 			$('.top').fadeIn();
+            $("#main-content").fadeTo(500, 1);
 		} else {
 			$('.top').fadeOut();
 		}
 	});
 
 	//Click event to scroll to top
-	$('.top').click(function(){
+	$('.top').click(function() {
 		$('html, body').animate({scrollTop : 0},800);
-		return false;
 	});
 
 });

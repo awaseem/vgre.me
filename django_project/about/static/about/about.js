@@ -1,5 +1,5 @@
 /**
- * Created by Ali Waseem on 3/13/15.
+ * Created by Ali Waseem on 3/21/15
  */
 
 $(document).ready(function() {
@@ -12,9 +12,9 @@ $(document).ready(function() {
         });
     });
 
-    $(window).on("scroll", function() {
+    $(window).on("scroll", function(){
         if ($(this).scrollTop() >= 200) {
-            $(".latest-reviews").fadeTo(1000, 1);
+            $("#main-content").fadeTo(500, 1);
         }
     });
 });

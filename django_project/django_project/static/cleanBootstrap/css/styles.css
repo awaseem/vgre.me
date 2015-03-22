@@ -85,8 +85,6 @@
 	transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
-
-
 }
 
 /* back, initially hidden pane */
@@ -214,8 +212,7 @@
     background:transparent;
 }
 
-.top
-{
+.top {
   width: 50px;
   height: 60px;
   line-height: 50px;
@@ -228,4 +225,10 @@
   right: 30px;
   text-decoration:none;
   display:none;
+}
+
+#header-text, #header-bar, #header-subtext, #header-posted,
+#main-content, #menu-toggle, #search-bar, .latest-reviews,
+header, footer {
+    opacity: 0;
 }
