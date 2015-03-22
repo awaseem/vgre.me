@@ -232,3 +232,14 @@
 header, footer {
     opacity: 0;
 }
+
+.sidemenu-heading {
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+    padding-left: 40px;
+}
+
+.home-heading {
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 20px;
+}
