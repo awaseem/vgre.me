@@ -84,6 +84,8 @@ class ArticleAdmin(admin.ModelAdmin):
         else:
             self.message_user(request, "ERROR: you can only show one page's preview", level=messages.ERROR)
 
+    show_preview.short_description = "Article Preview"
+
     def save_model(self, request, obj, form, change):
         if not obj.created_user:
             obj.created_user = request.user.get_username()

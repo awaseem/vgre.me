@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from users.models import Writer
 
+
 class WriteInLine(admin.StackedInline):
     model = Writer
     can_delete = False
@@ -13,6 +14,6 @@ class WriteInLine(admin.StackedInline):
 class UserAdmin(UserAdmin):
     inlines = [WriteInLine]
 
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-

@@ -30,7 +30,7 @@ class Article(models.Model):
     footer_image = models.URLField(blank=False, help_text="Enter the URL for a footer image")
     review_summary = models.TextField(blank=False, help_text="Enter a summary for this game review")
     review_score = models.IntegerField(blank=False, help_text="Enter a review score for this game",
-                                       choices=SCORE_CHOICES)
+                                       choices=SCORE_CHOICES, default=10)
 
     def __str__(self):
         return force_bytes("%s" % self.game_name)
