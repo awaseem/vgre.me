@@ -105,6 +105,9 @@
                                     <source src="{{ section.gif_url }}.mp4" type="video/mp4">
                                     Video is not supported on your browser
                                 </video>
+                                {% if section.gif_subheading %}
+                                    <span class="caption text-muted">{{ section.gif_subheading }}</span>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     </div>
