@@ -40,7 +40,7 @@ else:
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ["104.131.170.176"]
+ALLOWED_HOSTS = ["vgre.me"]
 
 # Application definition
 INSTALLED_APPS = (
