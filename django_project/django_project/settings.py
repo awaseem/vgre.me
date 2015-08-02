@@ -57,7 +57,7 @@ INSTALLED_APPS = (
     "users",
     "about",
 )
-
+# Tinymce config options, using browser spell check and not built in methods
 TINYMCE_DEFAULT_CONFIG = {
     "plugins": "spellchecker",
     "theme": "simple",
